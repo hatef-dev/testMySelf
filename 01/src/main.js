@@ -45,7 +45,7 @@ const generateParticles = () => {
   const positions = new Float32Array(parameters.count * 3);
   
   for (let i = 0; i < parameters.count; i++) {
-      positions[i] = (Math.random() - 0.5) * 10;
+      positions[i] = (Math.random() - 0.5) * 5;
     }
     
     particleGeometry = new THREE.BufferGeometry();
