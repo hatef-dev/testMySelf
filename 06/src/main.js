@@ -70,7 +70,7 @@ const generateParticles = () => {
 
   const positions = new Float32Array(parameters.count * 3);
   for (let i = 0; i < parameters.count * 3; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 10;
+    positions[i * 3] = (Math.random() - 0.5) * 200;
     positions[i * 3 + 1] = (Math.random() - 0.5) * 2;
     positions[i * 3 + 2] = 5 - Math.random() * 10;
   }
@@ -101,7 +101,7 @@ generateParticles();
 gui
   .add(parameters, "count")
   .min(100)
-  .max(1000)
+  .max(100000)
   .step(100)
   .onFinishChange(() => {
     generateParticles();
@@ -196,7 +196,7 @@ const animate = () => {
 
 animate();
 
-const scrollContainer = document.querySelector(".section");
+const scrollContainer = document.querySelector("main");
 let targetScroll = 0;
 let targetCameraX = 0;
 
@@ -205,9 +205,9 @@ scrollContainer.addEventListener("wheel", (evt) => {
   const scrollAmount = evt.deltaY;
   
   const currentScroll = scrollContainer.scrollLeft;
-  targetScroll = currentScroll + scrollAmount;
+  targetScroll = currentScroll + scrollAmount * 2;
   // Adjust the camera movement to match scroll position more precisely
-  targetCameraX = (targetScroll / sizes.width) * 16;
+  targetCameraX = (targetScroll / sizes.width) * 20;
 
   gsap.to(scrollContainer, {
     scrollLeft: targetScroll,
